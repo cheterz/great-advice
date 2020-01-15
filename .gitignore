@@ -4,4 +4,12 @@
 *.xml
 .idea
 .gradle
-
+*.bin
+*.lock
+*.xml
+*.ser
+*.bin
+*.lock
+*.bin
+*.lock
+*.bin
