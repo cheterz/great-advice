@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
                 val advice = response?.body?.string() ?: R.string.advice.toString()
                 val gson = GsonBuilder().create()
                 val adviceFeed = gson.fromJson(advice, Advice::class.java)
+                TODO("NEED TO FIX NULL CRASH")
 
                 this@MainActivity.runOnUiThread {
                     this@MainActivity.tv_advice.text = adviceFeed.text
