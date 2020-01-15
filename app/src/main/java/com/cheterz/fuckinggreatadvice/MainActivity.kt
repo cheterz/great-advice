@@ -28,18 +28,16 @@ class MainActivity : AppCompatActivity() {
         val request = Request.Builder().url(url).build()
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
-                val advice = response?.body?.string() ?: R.string.advice.toString()
+                val advice = response?.body?.string()
                 val gson = GsonBuilder().create()
                 val adviceFeed = gson.fromJson(advice, Advice::class.java)
-                TODO("NEED TO FIX NULL CRASH")
-
                 this@MainActivity.runOnUiThread {
                     this@MainActivity.tv_advice.text = adviceFeed.text
                 }
             }
 
             override fun onFailure(call: Call, e: IOException) {
-                tv_advice.text = R.string.advice.toString()
+                tv_advice.setText(R.string.advice)
             }
         })
 
