@@ -29,11 +29,13 @@ class MainActivity : AppCompatActivity() {
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
                 val advice = response?.body?.string()
-                val gson = GsonBuilder().create()
-                val adviceFeed = gson.fromJson(advice, Advice::class.java)
-                this@MainActivity.runOnUiThread {
-                    this@MainActivity.tv_advice.text = adviceFeed.text
-                }
+                if (advice != null){
+                    val gson = GsonBuilder().create()
+                    val adviceFeed = gson.fromJson(advice, Advice::class.java)
+                    this@MainActivity.runOnUiThread {
+                        this@MainActivity.tv_advice.text = adviceFeed?.text ?: ""
+                    }
+                }else (this@MainActivity.tv_advice.setText(R.string.advice))
             }
 
             override fun onFailure(call: Call, e: IOException) {

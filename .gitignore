@@ -5,3 +5,6 @@
 .idea
 .gradle
 
+*.bin
+*.lock
+*.xml
