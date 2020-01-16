@@ -1,6 +1,8 @@
 package com.cheterz.fuckinggreatadvice
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,6 +24,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_sharing, menu)
+        return true
+    }
+
     fun run(url: String) {
         val request = Request.Builder().url(url).build()
         client.newCall(request).enqueue(object : Callback {
@@ -33,7 +40,9 @@ class MainActivity : AppCompatActivity() {
                     this@MainActivity.runOnUiThread {
                         this@MainActivity.tv_advice.text = adviceFeed?.text ?: ""
                     }
-                } else (this@MainActivity.tv_advice.setText(R.string.advice))
+                } else (this@MainActivity.runOnUiThread {
+                    this@MainActivity.tv_advice.setText(R.string.advice)
+                })
             }
 
             override fun onFailure(call: Call, e: IOException) {
