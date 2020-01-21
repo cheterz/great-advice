@@ -24,3 +24,5 @@
 *.bin
 *.lock
 .idea/workspace.xml
+
+*.iml
