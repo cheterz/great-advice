@@ -55,8 +55,6 @@ class MainActivity : AppCompatActivity() {
                     this@MainActivity.runOnUiThread {
                         adviceText = adviceFeed?.text ?: ""
                         this@MainActivity.tv_advice.text = adviceFeed?.text ?: ""
-
-
                     }
                 } else (this@MainActivity.runOnUiThread {
                     this@MainActivity.tv_advice.setText(R.string.advice)

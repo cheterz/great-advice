@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Fucking Great Advice</string>
     <string name="advice">Здесь будет охуенный блять совет</string>
+    <string name="hint">нажми, чтобы получить совет</string>
 </resources>
